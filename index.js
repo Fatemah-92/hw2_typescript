@@ -1,3 +1,4 @@
+//---------------------create persons array for users information-------------------------
 var persons = [
     {
         age: 18,
@@ -15,18 +16,21 @@ var persons = [
         occupation: 'techer'
     }
 ];
+//---------------------create function to print the users information-------------------------
 function printPersons(persons) {
     for (var person in persons) {
         console.log(persons[person]);
+        //console.log(`The information of user: ${persons[person]}`);   
     }
 }
 printPersons(persons);
-/*
-let admin: userAdmin[]= [
+console.log('-----------------------------------');
+//---------------------add admins information to persons array-------------------------
+var admins = [
     {
-        age: 40,
-        name: "Fahad",
-        specialty: "Quality"
+        age: 41,
+        name: 'Fahad',
+        specialty: 'Quality'
     },
     {
         age: 42,
@@ -37,33 +41,30 @@ let admin: userAdmin[]= [
         age: 43,
         name: "Salem",
         specialty: "IT"
-    },
-]
-
-for(let item in admin) {
-    persons.push(item)
+    }
+];
+for (var admin in admins) {
+    persons.push(admins[admin]);
 }
-*/
-var admin1 = [
-    {
-        age: 40,
-        name: "Fahad",
-        specialty: "Quality"
-    }
-];
-var admin2 = [
-    {
-        age: 42,
-        name: "Khaled",
-        specialty: "Finance"
-    }
-];
-var admin3 = [
-    {
-        age: 43,
-        name: "Salem",
-        specialty: "IT"
-    }
-];
-persons.push(admin1);
 printPersons(persons);
+console.log('-----------------------------------');
+//---------------------print the information depending on if the person is admin or user-------------------------
+for (var person in persons) {
+    if (persons[person].occupation) { //property .occupation it showed up because of >>> [key:string]: any
+        console.log("admin information: ".concat(persons[person].name, ", ").concat(persons[person].age, ", ").concat(persons[person].occupation));
+    }
+    else {
+        console.log("user information: ".concat(persons[person].name, ", ").concat(persons[person].age, ", ").concat(persons[person].specialty));
+    }
+}
+console.log('-----------------------------------');
+//---------------------create function to change the value of property age-------------------------
+function changeAge(name, age) {
+    for (var index in persons) {
+        if (persons[index].name == name) {
+            persons[index].age = age;
+            console.log("The age of ".concat(name, " changed to ").concat(persons[index].age));
+        }
+    }
+}
+changeAge('Salem', 45);
